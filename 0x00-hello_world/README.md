@@ -7,3 +7,29 @@ gcc $CFILE -c
 gcc -S $CFILE
 4. Write a script that compiles a C file and creates an executable named cisfun
 gcc $CFILE -o cisfun
+5. Write a C program that prints exactly "Programming is like building a multilingual puzzle, followed by a new line.
+#include <stdio.h>
+
+
+
+/**
+
+ * main - Entry point
+
+ *
+
+ * Return: Always 0 (Success)
+
+ */
+
+
+
+int main(void)
+
+{
+
+	puts("\"Programming is like building a multilingual puzzle");
+
+	return (0);
+
+}
