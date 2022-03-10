@@ -5,3 +5,5 @@ gcc -E $CFILE -o c
 gcc $CFILE -c
 3. Write a script that generates the assembly code of a C code and save it in an output file.
 gcc -S $CFILE
+4. Write a script that compiles a C file and creates an executable named cisfun
+gcc $CFILE -o cisfun
