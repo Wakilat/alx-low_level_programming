@@ -1,22 +1,23 @@
 #include <stdio.h>
 
 /**
- * main - Prints the alphabet in lowercase, and then in uppercase, followed by a new line
+ * main - Lanzador
  *
  * Return: returns (0)
  */
 
 int main(void)
 {
-	char c;
-	for (c = 'a'; c <= 'z'; c++)
+	char a = 'a';
+
+	for (a = 'a'; a <= 'z'; a++)
 	{
-		putchar(c);
+		putchar(a);
 	}
-	for (c = 'A'; c <= 'Z'; c++)
+	for (a = 'A'; a <= 'Z'; a++)
 	{
-		putchar(c);
+		putchar(a);
 	}
-	        putchar('\n');
-		return (0);
+	putchar('\n');
+	return (0);
 }
