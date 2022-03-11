@@ -8,37 +8,37 @@
 
 int main(void)
 {
-	int huns, tens, ones;
+	int i, e, g;
 
-	huns = 48;
-	tens = 48;
-	ones = 48;
+	i = 48;
+	e = 48;
+	g = 48;
 
-	while (tens < 58)
+	while (e < 58)
 	{
-		huns = 48;
-		while (huns < 58)
+		i = 48;
+		while (i < 58)
 		{
-			ones = 48;
-			while (ones < 58)
+			g = 48;
+			while (g < 58)
 			{
-				if (tens != huns && tens != ones && huns != ones && tens < huns && huns < ones)
+				if (e != i && e != g && i != g && e < i && i < g)
 				{
-					putchar(tens);
-					putchar(huns);
-					putchar(ones);
-					if (huns == 56 && tens == 55 && ones == 57)
+					putchar(e);
+					putchar(i);
+					putchar(g);
+					if (i == 56 && e == 55 && g == 57)
 					{
 						break;
 					}
 					putchar(',');
 					putchar(' ');
 				}
-				ones++;
+				g++;
 			}
-			huns++;
+			i++;
 		}
-		tens++;
+		e++;
 	}
 	putchar('\n');
 	return (0);
