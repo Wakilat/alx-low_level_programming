@@ -1,15 +1,18 @@
 #include <stdio.h>
 
 /**
- * main - Prints all single digit numbers of base 10 starting from 0, followed by a new line
+ * main - Lanzador
  *
- * Return: returns (0) after printing
+ * Return: Always return 0
  */
 
 int main(void)
 {
-	int i;
+	int i = 0;
+
 	for (i = 0; i < 10; i++)
-	printf("%i\n", i);
+	{
+		printf("%i\n", i);
+	}
 	return (0);
 }
