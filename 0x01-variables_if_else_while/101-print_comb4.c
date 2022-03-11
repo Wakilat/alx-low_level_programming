@@ -14,9 +14,9 @@ int main(void)
 
 	for (huns = 0; huns <= 9; huns++)
 	{
-		for (tens = hun + 1; tens <= 9; tens++)
+		for (tens = huns + 1; tens <= 9; tens++)
 		{
-			 (ones = tens + 1; ones <= 9; ones++)
+			for (ones = tens + 1; ones <= 9; ones++)
 			 {
 				 putchar(huns + '0');
 				 putchar(tens + '0');
