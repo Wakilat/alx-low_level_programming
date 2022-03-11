@@ -1,18 +1,18 @@
 #include <stdio.h>
 
 /**
- * main - Write a program that prints the alphabet in lowercase, followed by a new line
+ * main - Lanzador
  *
  * Result: Always 0
  */
 
 int main(void)
 {
-	char c = 'c';
+	char a = 'a';
 
-	for (c = 'a'; c <= 'z'; c++)
+	for (a = 'a'; a <= 'z'; a++)
 	{
-		putchar(c);
+		putchar(a);
 	}
         putchar('\n');
         return (0);
