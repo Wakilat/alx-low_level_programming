@@ -8,10 +8,12 @@
 
 int main(void)
 {
-	char c;
+	char c = 'c';
 
 	for (c = 'a'; c <= 'z'; c++)
-	       	putchar(c);
+	{
+		putchar(c);
+	}
         putchar('\n');
         return (0);
 }
