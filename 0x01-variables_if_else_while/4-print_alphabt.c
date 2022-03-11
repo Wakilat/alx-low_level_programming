@@ -1,18 +1,20 @@
 #include <stdio.h>
 
 /**
- * main - Prints the alphabet in lowercase, followed by a new line except q and e
+ * main - Lanzador
  *
- * Return: returns (0)
+ * Return: Always return 0
  */
 
 int main(void)
 {
-	char ch;
-	for (ch = 'a'; ch <= 'z'; ch++)
+	char a = 'a';
+
+	for (a = 'a'; a <= 'z'; a++)
 	{
-		if (ch != 'e' && ch != 'q')
-		putchar(ch);
+		if (a != 'e' && a != 'q')
+			putchar(a);
 	}
-	        putchar('\n');
-		return (0);
+	putchar('\n')
+	return (0);
+}
