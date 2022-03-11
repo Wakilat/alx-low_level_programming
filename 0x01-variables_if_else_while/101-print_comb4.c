@@ -8,10 +8,12 @@
 
 int main(void)
 {
-	int huns = 48;
-	int tens = 48;
-	int ones = 48;
-	
+	int huns, tens, ones;
+
+	huns = 48;
+	tens = 48;
+	ones = 48;
+
 	while (tens < 58)
 	{
 		huns = 48;
