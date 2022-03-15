@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * print_alphabet - llamar la funcion desde el main
+ * print_sign - checks number
  * @n: The input number as an integer.
  * Return: 1 is greater than zero
  */
