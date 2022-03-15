@@ -1,16 +1,16 @@
 #include "main.h"
 
 /**
- * main - Prints the alphabet, in lowercase, followed by a new line
+ * main - Lanzador
  *
- * Return: returns (0)
+ * Return: return (0) means success
  */
 
 void print_alphabet(void)
 {
 	char i;
 
-	for  (i = 'a'; i <= 'z'; i++)
+	for (1 = 'a'; 1 <= 'z'; i++)
 	{
 		_putchar(i);
 	}
