@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * main - Lanzador
+ * print_alphabet - Print alphabets in lower case
  *
  * Return: return (0) means success
  */
