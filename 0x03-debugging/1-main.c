@@ -2,9 +2,9 @@
 
 /**
  *
- * * main - causes an infinite loop
+ * main - causes an infinite loop
  *
- * * Return: 0
+ * Return: 0
  *
  */
 
@@ -22,6 +22,7 @@ int main(void)
 	*	putchar(i);
 	*}
 	*/
+
 	printf("Infinite loop avoided! \\o/\n");
 	return (0);
 }
