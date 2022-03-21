@@ -7,7 +7,7 @@
  * Return: none
  */
 
-Prototype: int _strlen(char *s)
+int _strlen(char *s)
 {
 	int i = 0;
 
