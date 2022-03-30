@@ -10,7 +10,7 @@
 int bandersnatch(char *s1, char *s2);
 char *move(char *s2);
 
-int wildcmp(char *s1, char *s2);
+int wildcmp(char *s1, char *s2)
 {
 	int sum = 0;
 
