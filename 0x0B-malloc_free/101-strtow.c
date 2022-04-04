@@ -1,81 +1,119 @@
 #include "main.h"
 #include <stdlib.h>
 
-/*
- * wordCounterRec - count num of words recursively
- * @str: pointer to char
- * @i: current index
- * Return: number of words
- */
-
-int wordCounterRec(char *str, int i)
-{
-	if (str[i] == '\0')
-		return (0);
-	if (str[i] == ' ' && str[i + 1] != ' ' && str[i + 1] != '\0')
-		return (1 + wordCounterRec(str, i + 1));
-	return (wordCounterRec(str, i + 1));
-}
-
+int get_word_length(char *str);
+int get_word_count(char *str);
+int get_word_count(char *str);
 /**
- * word_counter - counts number of words in 1d array of strings
- * @str: pointer to char
- * Return: number of words
- */
-
-int word_counter(char *str)
-{
-	if (str[0] != ' ')
-		return (1 + wordCounterRec(str, 0));
-	return (wordCounterRec(str, 0));
-}
-
-/**
- * strtow - splits a string into words.
- * @str: string to be splitted
- * Return: pointer to an array of strings (words) or null
+ * strtow - takes a string and seperates its words
+ * @str: string to seperate into words
+ * Return: 2D array of pointers to each word
  */
 
 char **strtow(char *str)
 {
-	char **strDup;
-	int i, n, m, words;
+	char **words;
+	int wc, wordLen, n, i = 0;
 
-	if (str == NULL || str[0] == 0)
+	if (str == NULL || !*str)
 		return (NULL);
-	words = word_counter(str);
-	if (words < 1)
+	wc = get_word_count(str);
+	if (wc == 0)
 		return (NULL);
-	strDup = malloc(sizeof(char *) * (words + 1));
-	if (strDup == NULL)
+	words = malloc((wc + 1) * sizeof(char *));
+	if (words == NULL)
 		return (NULL);
-	i = 0;
-	while (i < words && *str != '\0')
+	while (i < wc)
 	{
-		if (*str != ' ')
+		wordLen = get_word_length(str);
+		if (*str == ' ' || *str == '\t')
+			str = get_next_word(str);
+		words[i] = malloc((wordLen + 1) * sizeof(char));
+		if (words[i] == NULL)
 		{
-			n = 0;
-			while (str[n] != ' ')
-				n++;
-			strDup[i] = malloc(sizeof(char) * (n + 1));
-			if (strDup[i] == NULL)
+			while (i >= 0)
 			{
-				while (--i >= 0)
-					free(strDup[--i]);
-				free(strDup);
-				return (NULL);
+				i--;
+				free(words[i]);
 			}
-			m = 0;
-			while (m < n)
-			{
-				strDup[i][m] = *str;
-				m++, str++;
-			}
-			strDup[i][m] = '\0';
-			i++;
+			free(words);
+			return (NULL);
 		}
-		str++;
+		n = 0;
+		while (n < wordLen)
+		{
+			words[i][n] = *(str + n);
+			n++;
+		}
+		words[i][n] = '\0'; /* set end of str */
+		str = get_next_word(str);
+		i++;
 	}
-	strDup[i] = '\0';
-	return (strDup);
+	words[i] = NULL; /* last element is null for iteration */
+	return (words);
+}
+/**
+ * get_word_length - gets the word length of cur word in str
+ * @str: string to get word length from current word
+ * Return: word length of current word
+ */
+int get_word_length(char *str)
+{
+	int wLen = 0, pending = 1, i = 0;
+
+	while (*(str + i))
+	{
+		if (*(str + i) == ' ' || *(str + i) == '\t')
+			pending = 1;
+		else if (pending)
+		{
+			wLen++;
+		}
+		if (wLen > 0 && (*(str + i) == ' ' || *(str + i) == '\t'))
+			break;
+		i++;
+	}
+	return (wLen);
+}
+/**
+ * get_word_count - gets the word count of a string
+ * @str: string to get word count from
+ * Return: the word count of the string
+ */
+int get_word_count(char *str)
+{
+	int wc = 0, pending = 1, i = 0;
+
+	while (*(str + i))
+	{
+		if (*(str + i) == ' ' || *(str + i) == '\t')
+			pending = 1;
+		else if (pending)
+		{
+			pending = 0;
+			wc++;
+		}
+		i++;
+	}
+	return (wc);
+}
+/**
+ * get_next_word - gets the next word in a string
+ * @str: string to get next word from
+ * Return: pointer to first char of next word
+ */
+char *get_next_word(char *str)
+{
+	int pending = 0;
+	int i = 0;
+
+	while (*(str + i))
+	{
+		if (*(str + i) == ' ' || *(str + i) == '\t')
+			pending = 1;
+		else if (pending)
+			break;
+		i++;
+	}
+	return (str + i);
 }
