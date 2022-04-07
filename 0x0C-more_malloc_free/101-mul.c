@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
+#include "main.h"
 
 int contains_non_numeric(char *str);
 int _atoi(char *s);
