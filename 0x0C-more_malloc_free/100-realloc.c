@@ -2,7 +2,7 @@
 #include "main.h"
 
 /**
- * realloc -  reallocates a memory block using malloc and free
+ * _realloc -  reallocates a memory block using malloc and free
  * @ptr: void pointer
  * @old_size: already allocated size
  * @new_size: new size to allocate
@@ -11,43 +11,29 @@
 
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	unsigned char *np;
-	unsigned int i;
+	char *temp, *tempP;
+	unsigned int i = 0;
 
 	if (new_size == old_size)
 		return (ptr);
-	if (new_size == 0 && ptr != NULL)
+	if (ptr == NULL) /* treat as normal malloc */
 	{
-		free(ptr);
-		return (NULL);
-	}
-	if (ptr == NULL)
-	{
-		ptr = malloc(new_size * sizeof(void *));
-		if (ptr == NULL)
+		ptr = malloc(new_size);
+		if (!ptr)
 			return (NULL);
 		return (ptr);
 	}
-	np = malloc(new_size * sizeof(char));
-	if (np == NULL)
-		return (NULL);
-	i = 0;
-	if (new_size > old_size)
+	if (!new_size && ptr)
 	{
-		while (i < old_size)
-		{
-			np[i] = ((char *)ptr)[i];
-			i++;
-		}
 		free(ptr);
-		return (np);
+		return (NULL);
 	}
-	/* if new_size < old_size */
-	while (i < new_size)
-	{
-		np[i] = ((char *)ptr)[i];
-		i++;
-	}
+	temp = malloc(new_size);
+	tempP = ptr;
+	if (old_size > new_size)
+		old_size = new_size;
+	for (i = 0; i < old_size; i++)
+		temp[i] = tempP[i];
 	free(ptr);
-	return (np);
+	return (temp);
 }
