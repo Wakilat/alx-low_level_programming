@@ -1,6 +1,5 @@
 #include <stdio.h>
-#include <stdio.h>
-#include <unistd.h>
+#include "variadic_functions.h"
 
 /**
  * print_strings - prints all strings given, variadic
@@ -12,35 +11,23 @@
 
 void print_strings(const char *seperator, const unsigned int n, ...)
 {
-	va_list strs;
+	va_list strings;
 	unsigned int i;
-	char *cur_str;
-	const char *sep_cp;
-	char *nil, *nil_cp;
+	char *ptr;
 
-	nil = "(nil)";
-	va_start(strs, n);
+	va_start(strings, n);
 	for (i = 0; i < n; i++)
 	{
-		cur_str = va_arg(strs, char *);
-		if (cur_str == NULL)
-		{
-			nil_cp = nil;
-			while (*nil_cp)
-				putchar(*nil_cp++);
-		}
+		ptr = va_arg(strings, char *);
+		if (ptr == NULL)
+			printf("(nil)");
 		else
 		{
-			while (*cur_str)
-			{
-				putchar(*cur_str++);
-			}
+			printf("%s", ptr);
+			if (i < n - 1 && separator != NULL)
+				printf("%s", separator);
 		}
-		if (seperator == NULL || *seperator == '\0')
-			continue;
-		sep_cp = seperator;
-		while ((*sep_cp) && (i < (n - 1)))
-			putchar(*sep_cp++);
 	}
-	putchar('\n');
+	va_end(strings);
+	printf("\n");
 }
