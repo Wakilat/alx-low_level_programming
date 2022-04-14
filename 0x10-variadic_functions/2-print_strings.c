@@ -2,14 +2,12 @@
 #include "variadic_functions.h"
 
 /**
- * print_strings - prints all strings given, variadic
- * @seperator: seperator to print between strings
- * @n: number of strings
- * @...: strings to print
- * Return: always void
+ * print_strings - printsstrings followed by a new line
+ * @separator: seperators
+ * @n: number of arguements
  */
 
-void print_strings(const char *seperator, const unsigned int n, ...)
+void print_strings(const char *separator, const unsigned int n, ...)
 {
 	va_list strings;
 	unsigned int i;
