@@ -1,20 +1,25 @@
 #include "lists.h"
+#include <stdlib.h>
 /**
- * pop_listint - pops a list element from the beginning of a list
- * @head: double pointer to head of list
- *
- * Return: value of n for element deleted
+ * pop_listint - pops off the head of the list and returns its contents
+ * @head: head of the list
+ * Return: contents of head
  */
 int pop_listint(listint_t **head)
 {
-	listint_t *new_head;
-	int n_of_deleted_head;
+	int i;
+	listint_t *current, *tmp;
 
-	if (!*head) /* HEAD is NULL, empty list */
+	if (head == NULL)
 		return (0);
-	n_of_deleted_head = (*head)->n;
-	new_head = (*head)->next;
-	free(*head);
-	*head = new_head;
-	return (n_of_deleted_head);
+	tmp = current = *head;
+	if (*head)
+	{
+		i = current->n;
+		*head = current->next;
+		free(tmp);
+	}
+	else
+		i = 0;
+	return (i);
 }
