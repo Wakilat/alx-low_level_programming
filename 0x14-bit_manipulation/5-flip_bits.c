@@ -9,15 +9,13 @@
  */
 unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
-	unsigned int n_flips = 0;
-	unsigned long int xor = (n ^ m);
-	unsigned long int mask = 0x01;
+	unsigned long int xor = n ^ m, bits = 0;
 
-	while (mask <= xor)
+	while (xor > 0)
 	{
-		if (mask & xor) /* bit is lit in xor, will need to flip */
-			n_flips++;
-		mask = mask << 1;
+		bits += (xor & 1);
+		xor >>= 1;
 	}
-	return (n_flips);
+
+	return (bits);
 }

@@ -8,11 +8,10 @@
  */
 int set_bit(unsigned long int *n, unsigned int index)
 {
-	unsigned long int mask = 0x01;
-
-	mask = mask << index;
-	if (mask == 0x00) /* SOMETHING WENT WRONG MASK IS ALL 0'S */
+	if (index >= (sizeof(unsigned long int) * 8))
 		return (-1);
-	*n |= mask;
+
+	*n ^= (1 << index);
+
 	return (1);
 }
